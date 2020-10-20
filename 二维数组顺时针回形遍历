@@ -1,0 +1,54 @@
+//package Arraytests;
+/*
+*@author Lee
+*看过不少二维数组回型排序，写的不知所云，CS小白特此献上自己的代码。注：对角线元素奇偶个数会影响某个参数设置。
+*
+*/
+public class LoopTraversal2 {
+	
+	public static void number()  {
+		int[][] a = new int[][]{
+			{1,2,3,4},
+			{12,13,14,5},
+			{11,16,15,6},
+			{10,9,8,7},
+		};
+		int row = a.length;
+		int coloum = a[0].length;
+		int Count = row*coloum;
+		int count = 0;
+		int n = 0;   //列标
+		int m = 0;   //行标   
+		
+		for(int dia = 1; dia < coloum/2 +1; dia++) { //如果对角线元素为偶数则coloum/2 + 1；否则coloum/2+2
+			m = dia - 1;
+			while(n < coloum - dia) {
+				System.out.println(a[m][n]);
+				n++;
+				count++;
+			}
+			System.out.println(a[m][n]);
+			while(m < row - dia) {
+				m++;
+				System.out.println(a[m][n]);
+				count++;
+			}
+			while(n > dia - 1) {
+				n--;
+				System.out.println(a[m][n]);
+				count++;
+			}
+			while(m > dia + 1) {
+				m--;
+				System.out.println(a[m][n]);
+				count++;
+			}
+		}
+		
+	}	
+	
+	public static void main(String[] args) {
+		number();
+		
+		
+	}
