@@ -1,10 +1,10 @@
 //package Arraytests;
 /*
 *@author Lee
-*看过不少二维数组回型排序，写的不知所云，CS小白特此献上自己的代码。注：对角线元素奇偶个数会影响某个参数设置。
+*看过不少二维数组回型排序，写的不知所云，CS小白特此献上自己的代码。！！！该代码仅适用于方阵，列元素和行元素不等时，需要做出相应变化。
 *
 */
-public class LoopTraversal2 {
+public class LoopTraversal {
 	
 	public static void number()  {
 		int[][] a = new int[][]{
@@ -20,8 +20,8 @@ public class LoopTraversal2 {
 		int n = 0;   //列标
 		int m = 0;   //行标   
 		
-		for(int dia = 1; dia < coloum/2 +1; dia++) { //如果对角线元素为偶数则coloum/2 + 1；否则coloum/2+2
-			m = dia - 1;
+		for(int dia = 1; dia < coloum/2 +1; dia++) {
+			m = dia - 1;  //dia表示对角线第几个元素，即回型遍历第几圈
 			while(n < coloum - dia) {
 				System.out.println(a[m][n]);
 				n++;
@@ -38,11 +38,17 @@ public class LoopTraversal2 {
 				System.out.println(a[m][n]);
 				count++;
 			}
-			while(m > dia + 1) {
-				m--;
+			while(m > dia) {
+				m--;  //m归为到这圈的dia值，为下一圈准备初始行标！
 				System.out.println(a[m][n]);
 				count++;
 			}
+			n++;   //为下一圈遍历初始化列标
+			count++;
+		}
+		if(count<Count){
+			System.out.println(a[m][n]);
+			count++;
 		}
 		
 	}	
