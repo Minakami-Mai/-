@@ -1,28 +1,33 @@
-//二分法，测试版
+//二分法
 public class test {
 	
-	public static int erfen(int a, int b, int c){
+	public static int erfen(int a, int b, int c, int[] array){
 		int temp = ((a + b)/2);
 		
-		while(a < b){
-			if(c == array[temp])
-				return temp;
-			if(c > array[temp])
-				erfen(temp,b, c);
-			if(c < array[temp])
-				erfen(a,temp, c);
+		if(c > array[b] || c < array[a])
+			return -1;
+		if(a == b && c!= array[a]){
+			return -1;
 		}
-		return -1;
-		
+
+		if(c == array[temp]){
+			return temp;
+		}			
+		if(c > array[temp] && c < array[b]){
+			return erfen(temp, b, c, array);
+		}			
+		if(c < array[temp] && array[a] < c){
+			return erfen(a, temp, c, array);
+		}
+		return 0;
 	}
 	
     public static void main(String []args) {
-		int[] array = {1,2,3,4,5,6,7,8,9,0};
+		int[] array = new int[]{1,2,3,4,5,6,7,8,9,0};
 		int a = 0;
-		int b = array.length;
-		int c = 5;
-		erfen(a, b, c);
+		int b = array.length-1;
+		int c = 6;
 		
-       System.out.println(erfen(a, b, c));
+       System.out.println(erfen(a, b, c, array));
     }
 }
