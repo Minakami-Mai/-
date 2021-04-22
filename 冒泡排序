@@ -1,0 +1,27 @@
+public class MaoPao {
+	
+	static int[] ShuZu = {2,6,7,4,1,3,0,5,9,8,100,68,54,-1};
+	
+	static int[] MaoPao(int[] a){
+		
+		for(int i=0, j=a.length-1; i<j;j--){    //每次冒最大的
+			for(i=0;i<j;i++){
+				if(a[i]>a[i+1]){
+					int temp = a[i+1];
+					a[i+1] = a[i];
+					a[i] = temp;
+				}
+			}
+			i = 0;  //i归零
+		
+		}
+		return a;
+	}
+	
+    public static void main(String []args) {
+	    ShuZu = MaoPao(ShuZu);
+		for(int i=0;i<ShuZu.length-1;i++)
+      		 System.out.println(ShuZu[i]);
+    }
+}
+
